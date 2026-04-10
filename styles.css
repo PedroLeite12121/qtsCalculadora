@@ -1,0 +1,73 @@
+.container{
+    font-family: arial;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.calculadora{
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    margin-top: 30px;
+    border-radius: 15px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 30px;
+    align-items: center;
+    background-color: rgb(255, 255, 255);
+    width: 400px;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+}
+
+#visor{
+    width: 100%;
+    align-self: center;
+    justify-content: right;
+    display: flex;
+    align-items: center;
+    color: white;
+    font-size: 1.8rem;
+    margin-bottom: 50px;
+    padding-left: 10px;
+    padding-right: 10px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 110px;
+    background-color: rgb(32, 32, 32);
+}
+
+.botoes{
+    display: flex;
+    width: fit-content;
+}
+
+button{
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 5px;
+    background-color: white;
+    border-radius: 10px;
+    border: 0;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    width: 80px;
+    height: 55px;
+}
+
+.leftButtons{
+    margin-right: 10px;
+    align-content: space-between; 
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.leftButtons button{
+    height: 65px;
+}
+.operators{
+    gap: 5px;
+    display: flex;
+    flex-direction: column;
+    
+}
