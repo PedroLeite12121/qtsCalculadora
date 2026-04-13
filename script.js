@@ -11,32 +11,47 @@ const btnNumeros = document.querySelectorAll(".numero")
 
 let numeros = []
 
-let visorEstatico = "";
+
 let concat = "";
 
 
 
-for(let i = 0; i<btnNumeros.length; i++) {
-    btnNumeros[i].addEventListener("click", function() {
-        concat = concat + i.toString();
-        visor.textContent = concat
+btnNumeros.forEach(btn => {
+    btn.addEventListener("click", function() {
+        concat += this.textContent;   
+        visor.textContent = concat;
     });
-}
-
-btnPonto.addEventListener("click", function() {
-    concat = concat + "."
-    visor.textContent = concat
 });
 
+btnPonto.addEventListener("click", function() {
+    //basicamente procura um . seguido de um número, se esse número tiver outro ponto dentro dele, impede a ação
+    if (/\.\d*$/.test(concat)) {
+        return;   
+    }
+
+    if (concat === "" || /[+\-*/]$/.test(concat)) {
+        concat += "0.";    
+    } else {
+        concat += ".";
+    }
+
+    visor.textContent = concat;
+});
 btnApagar.addEventListener("click", function() {
     concat = concat.slice(0, -1); 
     visor.textContent = concat
 });
 
 btnMais.addEventListener("click", function() {
-    if(concat.at(-1) != "+" && concat.at(-1) != "-" && concat.at(-1) != "/" && concat.at(-1) != "*" && concat.at(0) != null) {
+    if(concat.at(-1) != "+" && concat.at(-1) != "/" && concat.at(-1) != "*" && concat.at(0) != null) {
+        if(concat.at(-1) == "-") {
+            concat = concat.slice(0, -1); 
+            concat = concat + "+"
+        }
+        else{
+            concat = concat + "+"
+        }
 
-        concat = concat + "+"
 
         visor.textContent = concat
     }
@@ -45,9 +60,13 @@ btnMais.addEventListener("click", function() {
 
 btnMenos.addEventListener("click", function() {
     if(concat.at(-1) != "-") {
-
-        concat = concat + "-"
-
+        if(concat.at(-1) == "+") {
+            concat = concat.slice(0, -1); 
+            concat = concat + "-"
+        }
+        else{
+            concat = concat + "-"
+        }
         visor.textContent = concat
     }
 });
